@@ -85,7 +85,7 @@ while True:
         total_1 = total_1 + random.randint(-6, 8)
         total_2 = total_2 + random.randint(-5, 6)
 
-    time.sleep(2) #this is in seconds   
+    time.sleep(5) #this is in seconds   
    
 #should save graph when loop is broken
     print("Saving figure!!!")

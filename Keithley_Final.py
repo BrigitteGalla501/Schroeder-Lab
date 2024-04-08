@@ -1,4 +1,3 @@
-#from sqlite3 import Time       &if this doesn't break things then delete
 import time
 import matplotlib.pyplot as plt
 import csv
@@ -12,6 +11,8 @@ y2_value = 0 #this is parsed voltage
 
 fieldnames = ["Time", "Voltage", "Voltage with Units", "Date and Time"]
 
+#These are the lists that the data will be placed in. 
+#These can fill up but shouldn’t do so unless it is run continuously for several months.
 TimeList= []
 VoltageList= []
 VwUnitsList= []
@@ -19,6 +20,7 @@ date= []
 
 startTime = time.time() # Create a variable that holds the starting timestamp.
 
+#Connecting with the Keithley equipment 
 # Initialize the keithley and create some useful variables
 electrometer = pyvisa.ResourceManager().open_resource('GPIB0::1::INSTR')# Connect to the keithley and set it to a variable named electometer.
 ##check that the this is the right channel/ that a channel locaion is needed
@@ -36,14 +38,13 @@ print ("date and time =", dt_string)
 # Setup the plot 
 plt.figure(figsize=(10,10)) # Initialize a matplotlib figure
 plt.xlabel('Elapsed Time (s)', fontsize=12) # Create a label for the x axis and set the font size to 24pt
-plt.xticks(fontsize=9) # Set the font size of the x tick numbers to 18pt
+plt.xticks(fontsize=9) # Set the font size of the x tick numbers to 9pt
 plt.ylabel('Voltage (V)', fontsize=12) # Create a label for the y axis and set the font size to 24pt
-plt.yticks(fontsize=9) # Set the font size of the y tick numbers to 18pt
+plt.yticks(fontsize=9) # Set the font size of the y tick numbers to 9pt
 titleText= ('Voltage (V) vs Time: ', dt_string) ## makes a string out of the Voltage Vs Time plus the current date and time.
 plt.title(titleText) #title for the graph
 
-
-i= 0
+i=0
 
 #This is to have the user input the name of the csv file into the terminal
 #Having the name as a variable removes human error by making sure that the name matches in all the areas.
@@ -57,7 +58,7 @@ with open(titlefile, 'w') as csv_file:
     csv_writer.writeheader()
 
 while True:
-    
+
     #gets the date and time 
     from datetime import datetime   # noqa: E402
     now = datetime.now() #makes an object with the date and time 
