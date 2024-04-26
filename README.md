@@ -1,2 +1,2 @@
 # Schroeder-Lab
-This is were code for the lab will be stored.
+This is where code for the lab will be stored.
